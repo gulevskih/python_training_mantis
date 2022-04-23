@@ -28,3 +28,16 @@ class ProjectHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
+    def count(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("Manage").click()
+        wd.find_element_by_link_text("Manage Projects").click()
+        return len(wd.find_elements_by_css_selector("tr.row-1")) + len(wd.find_elements_by_css_selector("tr.row-2"))
+
+    def get_projects_list(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("Manage").click()
+        wd.find_element_by_link_text("Manage Projects").click()
+
+
+

@@ -28,6 +28,15 @@ class ProjectHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
+    def delete_first_project(self):
+        wd = self.app.wd
+        wd.find_element_by_link_text("Manage").click()
+        wd.find_element_by_link_text("Manage Projects").click()
+        wd.find_element_by_xpath("//tr[3]/td/a").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        wd.find_element_by_xpath("//input[@value='Delete Project']").click()
+        self.return_to_my_view_page()
+
     def count(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Manage").click()

@@ -14,3 +14,4 @@ def test_signup_new_account(app):
     app.session.login(username, password)
     assert app.session.is_lgged_in_as(username)
     app.session.logout()
+    assert app.soap.can_login(username, password)

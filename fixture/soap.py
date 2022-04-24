@@ -11,5 +11,5 @@ class SoapHelper:
         try:
             client.service.mc_login(username, password)
             return True
-        expect WebFault:
+        except WebFault:
             return False

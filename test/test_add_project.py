@@ -3,8 +3,7 @@ from model.project import Project
 def test_add_project(app):
     login = "administrator"
     password = "root"
-    project = Project(name="new2", description="qwerty2")
-    app.session.login(login, password)
+    project = Project(name="new3", description="qwerty3")
     #old_projects = app.project.count()
     old_projects = app.soap.get_list_projects(login, password)
     app.project.create(project)

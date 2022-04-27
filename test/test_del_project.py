@@ -1,14 +1,12 @@
 from model.project import Project
 
 def test_del_project(app):
-    login = "administrator"
-    password = "root"
-    if len(app.soap.get_list_projects(login, password)) == 0:
+    if len(app.soap.get_list_projects()) == 0:
         app.project.create(Project(name="test", description="test"))
     #old_projects = app.project.count()
-    old_projects = app.soap.get_list_projects(login, password)
+    old_projects = app.soap.get_list_projects()
     app.project.delete_first_project()
-    new_projects = app.soap.get_list_projects(login, password)
+    new_projects = app.soap.get_list_projects()
     #new_projects = app.project.count()
     #assert old_projects - 1 == new_projects
     old_projects[0:1] = []

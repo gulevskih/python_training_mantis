@@ -1,3 +1,5 @@
+from model.project import Project
+
 class ProjectHelper:
 
     def __init__(self, app):
@@ -43,10 +45,20 @@ class ProjectHelper:
         wd.find_element_by_link_text("Manage Projects").click()
         return len(wd.find_elements_by_css_selector("tr.row-1")) + len(wd.find_elements_by_css_selector("tr.row-2"))
 
-    def get_projects_list(self):
+    def get_project_list(self):
         wd = self.app.wd
+        project_list = []
         wd.find_element_by_link_text("Manage").click()
         wd.find_element_by_link_text("Manage Projects").click()
+        rows = wd.find_elements_by_css_selector(".width100 .row-1") + wd.find_elements_by_css_selector(".width100 .row-2")
+        for row in rows:
+            cells = row.find_elements_by_tag_name("td")
+            id = None
+            name = cells[0].text
+            description = cells[4].text
+            project_list.append(Project(id=id, name=name, description=description))
+        return project_list
+
 
 
 

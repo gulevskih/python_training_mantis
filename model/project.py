@@ -18,3 +18,6 @@ class Project:
             return int(self.id)
         else:
             return maxsize
+
+    def __lt__(self, other):
+        return self.name < other.name

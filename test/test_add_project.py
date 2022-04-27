@@ -1,7 +1,7 @@
 from model.project import Project
 
 def test_add_project(app):
-    project = Project(name="new4", description="qwerty4")
+    project = Project(name="new7", description="qwerty7")
     #old_projects = app.project.count()
     old_projects = app.soap.get_list_projects()
     app.project.create(project)
